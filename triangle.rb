@@ -14,7 +14,27 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  raise TriangleError if a <= 0 || b <= 0 || c <= 0
+
+  hypotenuse, a, b = 
+  if c > a || c > b 
+    [c, a, b]
+  elsif b > a || b > c
+    [b, a, c]
+  else
+    [a, b, c]
+  end
+
+  raise TriangleError if a + b <= hypotenuse
+
+  case
+  when hypotenuse == a && hypotenuse == b
+    :equilateral
+  when hypotenuse == a || hypotenuse == b
+    :isosceles
+  else
+    :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
